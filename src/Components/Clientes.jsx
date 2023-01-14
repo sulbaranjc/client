@@ -85,7 +85,7 @@ const modificarAlumno = async(e) => {
         <h1 className='text-center'>CRUD CLIENTES</h1>
         <Row>
         <Col xs={12} lg={8}>
-          <h3 className='text-center'>Lista de Alumnos</h3>
+          <h3 className='text-center'>Lista de Clientes</h3>
           <Form className="d-flex">
             <Form.Control
               type="search"
