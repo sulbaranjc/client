@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react'
 import axios from 'axios';
+import "../Styles/components/Clientes.css"
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -81,10 +82,11 @@ const modificarAlumno = async(e) => {
   cargarDatos()
 }
   return (
-    <Container className="w-lg" fluid={false}>
+    <Container className=" clientes " 
+      fluid={true}>
         <h1 className='text-center'>CRUD CLIENTES</h1>
-        <Row>
-        <Col xs={12} lg={8}>
+        <Row className='bg-light mx-3 border border-5 rounded-3' >
+        <Col className='' xs={12} lg={8}>
           <h3 className='text-center'>Lista de Clientes</h3>
           <Form className="d-flex">
             <Form.Control
@@ -115,13 +117,14 @@ const modificarAlumno = async(e) => {
                   <tr key={fila.client_id}>
                     <td class="align-middle">
                       <Button className='me-centre' 
-                        variant="warning" size="sm" onClick={()=>activarModificacion(fila.client_id)}>Edit
+                        variant="warning" size="sm" onClick={()=>activarModificacion(fila.client_id)}>
+                          <ion-icon name="create-outline"></ion-icon>
                       </Button>
                     </td>
                     <td class="align-middle">
                       <Button variant="danger"
                       onClick={()=> delClient(fila.client_id)}  
-                      size="sm">Elim
+                      size="sm"><ion-icon name="trash-outline"></ion-icon>
                       </Button>
                     </td>
                     <td>{fila.client_id}</td>
@@ -140,11 +143,11 @@ const modificarAlumno = async(e) => {
         </Col>
         <Col xs={12} lg={4}>
           <h3 className='text-center'>Formulario</h3>
-          <Form>
+          <Form className='bg-light'>
 
             <Form.Group className="mb-3" controlId="Name">
               <Form.Label>Nombre</Form.Label>
-              <Form.Control type="text" placeholder="Indique el Nombre" 
+              <Form.Control type="text" placeholder="Nombres" 
               onChange={(e)=>setFirst_name(e.target.value)}
               value={first_name}
               />
@@ -152,7 +155,7 @@ const modificarAlumno = async(e) => {
 
             <Form.Group className="mb-3" controlId="SecondName">
               <Form.Label>Apellido  </Form.Label>
-              <Form.Control type="text" placeholder="indique Apellidos"
+              <Form.Control type="text" placeholder="Apellidos"
               onChange={(e)=>setLast_name(e.target.value)} 
               value={last_name}/>
             </Form.Group>
@@ -160,7 +163,7 @@ const modificarAlumno = async(e) => {
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Indique el Correo"
+              <Form.Control type="email" placeholder="Correo Electronico"
               onChange={(e)=>setEmail(e.target.value)}
               value={email}/>
             </Form.Group>
@@ -168,22 +171,26 @@ const modificarAlumno = async(e) => {
             <Form.Group className="mb-3" controlId="formBasicPhone">
               <Form.Label>Telfono</Form.Label>
               <Form.Control type="tel" 
-                placeholder="Enter phone" 
+                placeholder="Numero de Telefono" 
                 onChange={(e)=>setPhone_number(e.target.value)} 
                 value={phone_number}/>
             </Form.Group>
 
             <Form.Group  className="mb-3" controlId="formAddress">
               <Form.Label>Dirección</Form.Label>
-              <Form.Control type="text" placeholder="Ingresa tu dirección"
+              <Form.Control type="text" placeholder="dirección"
                 onChange={(e)=>setAddress(e.target.value)}
                 value={address}/>
             </Form.Group>
-            {validacionModificar ? (
-              <Button className="text-center" variant="warning" type="submit" onClick={(e)=>modificarAlumno(e)}>Modificar</Button>
-            ) : (
-              <Button className="text-center" variant="success" type="submit" onClick={(e)=>addClient(e)}>Agregar</Button>
-            ) }
+            <div className="d-grid">
+              {validacionModificar ? (
+                <Button className="text-center" variant="warning" type="submit" size="lg" onClick={(e)=>modificarAlumno(e)}>Modificar</Button>
+                  ) : (
+                <Button className="text-center btn-block " variant="success" type="submit" size="lg" onClick={(e)=>addClient(e)}>Agregar</Button>
+              ) }
+    </div>
+
+
     </Form>
         </Col>
       </Row>   
