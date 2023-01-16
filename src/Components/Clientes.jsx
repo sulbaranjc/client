@@ -92,12 +92,12 @@ const modificarAlumno = async(e) => {
             <Form.Control
               type="search"
               placeholder="Search"
-              className="me-2"
+              className="me-2 ms-2"
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <div className='border border-5 rounded-4'>
+          <div className='border border-5 rounded-4 ms-2 '>
             <Table className='' hover size="sm" responsive>
               <thead className=' table-primary'>
                 <tr className="text-center">
@@ -143,7 +143,7 @@ const modificarAlumno = async(e) => {
         </Col>
         <Col className='my-4 pt-1' xs={12} lg={4}>
           <h3 className='text-center'>Formulario</h3>
-          <Form className='bg-light mx-3 p-2 border border-5 rounded-4'>
+          <Form className='bg-light mx-2 p-2 border border-5 rounded-4'>
             <Form.Group className="mb-3" controlId="Name">
               <Form.Label>Nombre</Form.Label>
               <Form.Control type="text" placeholder="Nombres" 
