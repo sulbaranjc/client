@@ -83,12 +83,12 @@ const modificarAlumno = async(e) => {
 }
   return (
     <Container className=" clientes " 
-      fluid={true}>
+      fluid={true} >
         <h1 className='text-center'>CRUD CLIENTES</h1>
-        <Row className='bg-light mx-3 border border-5 rounded-3' >
+        <Row className='bg-light mx-3 border border-5 rounded-4'>
         <Col className='' xs={12} lg={8}>
           <h3 className='text-center'>Lista de Clientes</h3>
-          <Form className="d-flex">
+          <Form className="d-flex m-1">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -97,54 +97,53 @@ const modificarAlumno = async(e) => {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <Table bordered hover size="sm" responsive>
-            <thead>
-              <tr className="text-center">
-                <th>Edit</th>
-                <th>del</th>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Direcion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                
-                datos.map(fila => (
-                  <tr key={fila.client_id}>
-                    <td class="align-middle">
-                      <Button className='me-centre' 
-                        variant="warning" size="sm" onClick={()=>activarModificacion(fila.client_id)}>
-                          <ion-icon name="create-outline"></ion-icon>
-                      </Button>
-                    </td>
-                    <td class="align-middle">
-                      <Button variant="danger"
-                      onClick={()=> delClient(fila.client_id)}  
-                      size="sm"><ion-icon name="trash-outline"></ion-icon>
-                      </Button>
-                    </td>
-                    <td>{fila.client_id}</td>
-                    <td>{fila.first_name}</td>
-                    <td>{fila.last_name}</td>
-                    <td>{fila.email}</td>
-                    <td>{fila.phone_number}</td>
-                    <td style={{minWidth:"200px"}} >{fila.address}</td>
-                  </tr>
-  
-                ))
-              }
-            </tbody>
-          </Table>
-
+          <div className='border border-5 rounded-4'>
+            <Table className='' hover size="sm" responsive>
+              <thead className=' table-primary'>
+                <tr className="text-center">
+                  <th colSpan={2}>Accion</th>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Direcion</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  
+                  datos.map(fila => (
+                    <tr key={fila.client_id}>
+                      <td class="align-middle">
+                        <Button className='me-centre' 
+                          variant="warning" size="sm" onClick={()=>activarModificacion(fila.client_id)}>
+                            <ion-icon name="create-outline"></ion-icon>
+                        </Button>
+                      </td>
+                      <td class="align-middle">
+                        <Button variant="danger"
+                        onClick={()=> delClient(fila.client_id)}  
+                        size="sm"><ion-icon name="trash-outline"></ion-icon>
+                        </Button>
+                      </td>
+                      <td>{fila.client_id}</td>
+                      <td>{fila.first_name}</td>
+                      <td>{fila.last_name}</td>
+                      <td>{fila.email}</td>
+                      <td>{fila.phone_number}</td>
+                      <td style={{minWidth:"200px"}} >{fila.address}</td>
+                    </tr>
+    
+                  ))
+                }
+              </tbody>
+            </Table>
+          </div>
         </Col>
-        <Col xs={12} lg={4}>
+        <Col className='my-4 pt-1' xs={12} lg={4}>
           <h3 className='text-center'>Formulario</h3>
-          <Form className='bg-light'>
-
+          <Form className='bg-light mx-3 p-2 border border-5 rounded-4'>
             <Form.Group className="mb-3" controlId="Name">
               <Form.Label>Nombre</Form.Label>
               <Form.Control type="text" placeholder="Nombres" 
@@ -186,7 +185,9 @@ const modificarAlumno = async(e) => {
               {validacionModificar ? (
                 <Button className="text-center" variant="warning" type="submit" size="lg" onClick={(e)=>modificarAlumno(e)}>Modificar</Button>
                   ) : (
-                <Button className="text-center btn-block " variant="success" type="submit" size="lg" onClick={(e)=>addClient(e)}>Agregar</Button>
+                <Button className="text-center btn-block " variant="primary"  type="submit" size="lg" 
+                  onClick={(e)=>addClient(e)}>Agregar
+                </Button>
               ) }
     </div>
 

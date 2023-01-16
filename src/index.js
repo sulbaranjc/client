@@ -1,4 +1,4 @@
-import "react-bootstrap"
+//import "react-bootstrap"
 import "./assets/css/Styles.min.css"
 
 import React from 'react';

@@ -1,14 +1,15 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
-$theme-colors: (
-  "primary":    #7a52b0,
-  "body" :  #217ccb
-) ;
+// $theme-colors: (
+//   "primary":    #2AFADF,
+//   "body" :  #3bdcc9ea
+// ) ;
 
 
 
 
-$primary:    #7a52b0;
+$primary:    #2AFADF;
 
 $border-radius : 1rem;
 $spacer: 1.5rem;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
