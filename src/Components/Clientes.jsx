@@ -18,6 +18,20 @@ const [email,setEmail] = React.useState("")
 const [address,setAddress] = React.useState("")  
 const [validacionModificar,setvalidacionModificar] = React.useState(false)  
 const [idModificar,setIdModificar] = React.useState(0)  
+const [search, setSearch] = React.useState("")  
+
+const handleSearch = (event) => {
+  setSearch(event.target.value)
+}
+
+const filteredUser = datos.filter((user) => {
+  return user.last_name.toLowerCase().includes(search.toLowerCase())
+    || user.first_name.toLowerCase().includes(search.toLowerCase()) 
+    || user.email.toLowerCase().includes(search.toLowerCase())
+    || user.phone_number.toLowerCase().includes(search.toLowerCase())
+    || user.address.toLowerCase().includes(search.toLowerCase())
+    || user.client_id === parseInt(search);
+});
 
 
 useEffect(() =>{
@@ -94,6 +108,8 @@ const modificarAlumno = async(e) => {
               placeholder="Search"
               className="me-2 ms-2"
               aria-label="Search"
+              value={search}
+              onChange={handleSearch}
             />
             <Button variant="outline-success">Search</Button>
           </Form>
@@ -113,7 +129,7 @@ const modificarAlumno = async(e) => {
               <tbody>
                 {
                   
-                  datos.map(fila => (
+                  filteredUser.map(fila => (
                     <tr key={fila.client_id}>
                       <td class="align-middle">
                         <Button className='me-centre' 
