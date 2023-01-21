@@ -24,14 +24,12 @@ const handleSearch = (event) => {
   setSearch(event.target.value)
 }
 
-const filteredUser = datos.filter((user) => {
-  return user.last_name.toLowerCase().includes(search.toLowerCase())
-    || user.first_name.toLowerCase().includes(search.toLowerCase()) 
-    || user.email.toLowerCase().includes(search.toLowerCase())
-    || user.phone_number.toLowerCase().includes(search.toLowerCase())
-    || user.address.toLowerCase().includes(search.toLowerCase())
-    || user.client_id === parseInt(search);
-});
+const filteredUser = datos.filter((user) => user.last_name.toLowerCase().includes(search.toLowerCase())
+|| user.first_name.toLowerCase().includes(search.toLowerCase())
+|| user.email.toLowerCase().includes(search.toLowerCase())
+|| user.phone_number.toLowerCase().includes(search.toLowerCase())
+|| user.address.toLowerCase().includes(search.toLowerCase())
+|| user.client_id === parseInt(search));
 
 
 useEffect(() =>{
@@ -39,7 +37,7 @@ useEffect(() =>{
 },[])
 
 const cargarDatos = async() => {
-  const respuesta = await axios.get("http://192.168.1.219:3300/api/clients/")
+  const respuesta = await axios.get("http://192.168.1.148:3300/api/clients/")
   respuesta.data.sort((a, b) => (a.client_id - b.client_id));
   setDatos(respuesta.data)
  
@@ -48,7 +46,7 @@ const cargarDatos = async() => {
 
 const addClient = async (e) => {
   e.preventDefault()
-  await axios.post("http://192.168.1.219:3300/api/clients/",{
+  await axios.post("http://192.168.1.148:3300/api/clients/",{
     first_name,
     last_name,
     phone_number,
@@ -60,12 +58,12 @@ const addClient = async (e) => {
 }
 
 const delClient = async(id) => {
-  await axios.delete(`http://192.168.1.219:3300/api/clients/${id}`) 
+  await axios.delete(`http://192.168.1.148:3300/api/clients/${id}`) 
   cargarDatos()
 }
 
 const activarModificacion = async(id) => {
-  const respuesta = await axios.get(`http://192.168.1.219:3300/api/clients/${id}`)
+  const respuesta = await axios.get(`http://192.168.1.148:3300/api/clients/${id}`)
   setFirst_name(respuesta.data[0].first_name)
   setLast_name(respuesta.data[0].last_name)
   setPhone_number(respuesta.data[0].phone_number)
@@ -84,7 +82,7 @@ const LimpiarFormulario= () => {
 }
 const modificarAlumno = async(e) => {
   e.preventDefault()
-  await axios.patch(`http://192.168.1.219:3300/api/clients/${idModificar}`,{
+  await axios.patch(`http://192.168.1.148:3300/api/clients/${idModificar}`,{
     first_name,
     last_name,
     phone_number,
