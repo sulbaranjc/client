@@ -12,7 +12,7 @@ import SocialMediaContact from './Components/SocialMediaContact';
 
 function App() {
   return (
-    <Container  className="clientes m-0 p-0" 
+    <Container  className=" App clientes m-0 p-0" 
     fluid={true}>
       <HeadApp />
       <NavbarApp />

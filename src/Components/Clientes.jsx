@@ -4,16 +4,18 @@ import axios from 'axios';
 import "../Styles/components/Clientes.css"
 
 
-
+import Pagination from 'react-bootstrap/Pagination';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+// import { useState } from 'react';
 
 
 const API_URL_SERVER = "http://192.168.1.148:3300/";
+// const API_URL_SERVER = "http://localhost:3300/";
 const API_TABLA_CONTROLLER = "api/clients/";
 const API_TOTAL_CONTROLLER = API_URL_SERVER+API_TABLA_CONTROLLER;
 
@@ -30,6 +32,7 @@ const [address,setAddress] = React.useState("")
 const [validacionModificar,setvalidacionModificar] = React.useState(false)  
 const [idModificar,setIdModificar] = React.useState(0)  
 const [search, setSearch] = React.useState("")  
+// const [currentPage, setCurrentPage] = useState(0);
 
 const handleSearch = (event) => {
   setSearch(event.target.value)
@@ -105,7 +108,7 @@ const modificarAlumno = async(e) => {
   cargarDatos()
 }
   return (
-    <Container className=" clientes mt-3" 
+    <Container className=" clientes mt-3 "  
       fluid={true} >
         <Row className='bg-light mx-3 border border-5 rounded-4'>
         <Col className='' xs={12} lg={8}>
@@ -164,7 +167,15 @@ const modificarAlumno = async(e) => {
                 }
               </tbody>
             </Table>
+
           </div>
+          <Pagination size="lg" className=' mt-2 justify-content-center' >
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination>
+
         </Col>
         <Col className='my-4 pt-1' xs={12} lg={4}>
           <h3 className='text-center'>Formulario</h3>
@@ -219,6 +230,7 @@ const modificarAlumno = async(e) => {
 
     </Form>
         </Col>
+  
       </Row>   
     </Container>
   );

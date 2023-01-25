@@ -7,7 +7,7 @@ import { SocialIcon } from "react-social-icons";
 class SocialMediaContact extends React.Component {
   render() {
     return (
-      <section className="Social-media py-2 mx-4">
+      <section className="Social-media py-2 mx-4 ">
         <div className="d-flex justify-content-center">
           <div className="px-2">
             <SocialIcon
@@ -23,6 +23,7 @@ class SocialMediaContact extends React.Component {
               url="https://twitter.com/EmmaHavokRock"
               network="twitter"
               target="_blank"
+              bgColor = "#2AFADF"
             />
           </div>
           <div className="px-2">
