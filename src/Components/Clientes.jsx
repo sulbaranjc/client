@@ -105,11 +105,11 @@ const modificarAlumno = async(e) => {
   cargarDatos()
 }
   return (
-    <Container className=" clientes " 
+    <Container className=" clientes mt-3" 
       fluid={true} >
-        <h1 className='text-center'>CRUD CLIENTES</h1>
         <Row className='bg-light mx-3 border border-5 rounded-4'>
         <Col className='' xs={12} lg={8}>
+          {/* <h1 className='text-center'>CRUD CLIENTES</h1> */}
           <h3 className='text-center'>Lista de Clientes</h3>
           <Form className="d-flex m-1">
             <Form.Control
