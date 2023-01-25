@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // import { useState } from 'react';
 
+const NUM_OF_ITEMS = 10;
 
 const API_URL_SERVER = "http://192.168.1.148:3300/";
 // const API_URL_SERVER = "http://localhost:3300/";
@@ -24,6 +25,7 @@ const API_TOTAL_CONTROLLER = API_URL_SERVER+API_TABLA_CONTROLLER;
 
 function Clientes() {
 const [datos,setDatos] = React.useState([])  
+// const [datos_Filtrados,setDatosFiltrados] = React.useState([])  
 const [first_name,setFirst_name] = React.useState("")  
 const [last_name,setLast_name] = React.useState("")  
 const [phone_number,setPhone_number] = React.useState("")  
@@ -32,9 +34,10 @@ const [address,setAddress] = React.useState("")
 const [validacionModificar,setvalidacionModificar] = React.useState(false)  
 const [idModificar,setIdModificar] = React.useState(0)  
 const [search, setSearch] = React.useState("")  
-// const [currentPage, setCurrentPage] = useState(0);
+const [currentPage, setCurrentPage] = React.useState(0);
 
 const handleSearch = (event) => {
+  setCurrentPage(0)
   setSearch(event.target.value)
 }
 
@@ -43,7 +46,7 @@ const filteredUser = datos.filter((user) => user.last_name.toLowerCase().include
 || user.email.toLowerCase().includes(search.toLowerCase())
 || user.phone_number.toLowerCase().includes(search.toLowerCase())
 || user.address.toLowerCase().includes(search.toLowerCase())
-|| user.client_id === parseInt(search));
+|| user.client_id === parseInt(search)).slice(currentPage,currentPage+NUM_OF_ITEMS);
 
 
 useEffect(() =>{
@@ -75,6 +78,17 @@ const delClient = async(id) => {
   await axios.delete(`${API_TOTAL_CONTROLLER}${id}`) 
   cargarDatos()
 }
+
+const nexpPage = () =>{
+  if (filteredUser.length === NUM_OF_ITEMS) setCurrentPage( currentPage + NUM_OF_ITEMS );
+  // setCurrentPage( currentPage + NUM_OF_ITEMS );
+}
+
+const prevPage = () =>{
+  if ( currentPage > 0 )  setCurrentPage( currentPage - NUM_OF_ITEMS );
+}
+
+// const firstPage = () =>{ setCurrentPage(0);}
 
 const activarModificacion = async(id) => {
   const respuesta = await axios.get(`${API_TOTAL_CONTROLLER}${id}`)
@@ -112,19 +126,28 @@ const modificarAlumno = async(e) => {
       fluid={true} >
         <Row className='bg-light mx-3 border border-5 rounded-4'>
         <Col className='' xs={12} lg={8}>
-          {/* <h1 className='text-center'>CRUD CLIENTES</h1> */}
           <h3 className='text-center'>Lista de Clientes</h3>
           <Form className="d-flex m-1">
             <Form.Control
               type="search"
               placeholder="Search"
-              className="me-2 ms-2"
+              className="me-2 ms-1"
               aria-label="Search"
               value={search}
               onChange={handleSearch}
             />
             <Button variant="outline-success">Search</Button>
           </Form>
+          <Pagination size="lg" className=' mt-2 ms-2 d-flex flex-row' >
+            {/* <Pagination.Item>{}</Pagination.Item>  
+            <Pagination.Item>{currentPage}</Pagination.Item>  
+            <Pagination.Item>{filteredUser.length}</Pagination.Item>  
+            <Pagination.First onClick={firstPage}/> */}
+            <Pagination.Prev onClick={prevPage} />
+            <Pagination.Next onClick={nexpPage} />
+            {/* <Pagination.Last /> */}
+          </Pagination>
+
           <div className='border border-5 rounded-4 ms-2 '>
             <Table className='' hover size="sm" responsive>
               <thead className=' table-primary'>
@@ -169,12 +192,6 @@ const modificarAlumno = async(e) => {
             </Table>
 
           </div>
-          <Pagination size="lg" className=' mt-2 justify-content-center' >
-              <Pagination.First />
-              <Pagination.Prev />
-              <Pagination.Next />
-              <Pagination.Last />
-            </Pagination>
 
         </Col>
         <Col className='my-4 pt-1' xs={12} lg={4}>
