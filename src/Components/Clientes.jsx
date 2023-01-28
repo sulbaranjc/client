@@ -15,7 +15,7 @@ import Form from 'react-bootstrap/Form';
 
 const NUM_OF_ITEMS = 10;
 
-const API_URL_SERVER = "http://192.168.1.148:3300/";
+const API_URL_SERVER = "http://192.168.1.147:3300/";
 // const API_URL_SERVER = "http://localhost:3300/";
 const API_TABLA_CONTROLLER = "api/clients/";
 const API_TOTAL_CONTROLLER = API_URL_SERVER+API_TABLA_CONTROLLER;
