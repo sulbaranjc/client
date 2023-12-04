@@ -15,9 +15,9 @@ import Form from 'react-bootstrap/Form';
 
 const NUM_OF_ITEMS = 10;
 
-const API_URL_SERVER = "http://sulbaranjc.com:3300/";
+//const API_URL_SERVER = "http://sulbaranjc.com:3300/";
 //const API_URL_SERVER = "http://192.168.1.147:3300/";
-// const API_URL_SERVER = "http://localhost:3300/";
+const API_URL_SERVER = "http://localhost:3150/";
 const API_TABLA_CONTROLLER = "api/clients/";
 const API_TOTAL_CONTROLLER = API_URL_SERVER+API_TABLA_CONTROLLER;
 
@@ -30,7 +30,7 @@ const [datos,setDatos] = React.useState([])
 const [first_name,setFirst_name] = React.useState("")  
 const [last_name,setLast_name] = React.useState("")  
 const [phone_number,setPhone_number] = React.useState("")  
-const [email,setEmail] = React.useState("")  
+const [email,setEmail] = Reacodect.useState("")  
 const [address,setAddress] = React.useState("")  
 const [validacionModificar,setvalidacionModificar] = React.useState(false)  
 const [idModificar,setIdModificar] = React.useState(0)  
